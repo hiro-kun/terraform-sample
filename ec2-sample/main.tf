@@ -12,6 +12,5 @@ provider "aws" {
 
 module "app" {
   source  = "modules/compute/ec2/"
-  #モジュール内でグローバルな変数を使う場合はここで引数にして渡す
-  key_name = "aws_ono-hiroshi"
+  key_name = "hoge"
 }
