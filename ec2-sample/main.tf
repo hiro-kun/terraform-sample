@@ -10,7 +10,13 @@ provider "aws" {
   region     = "${var.region}"
 }
 
-module "app" {
-  source  = "modules/compute/ec2/"
-  key_name = "hoge"
+module "vpc" {
+  source  = "modules/vpc/"
+}
+
+module "ec2" {
+  source            = "modules/compute/ec2/"
+  key_name          = "hoge"
+  subnet_id         = "${module.vpc.subnet_id}"
+  security_group_id = "${module.vpc.security_group_id}"
 }
