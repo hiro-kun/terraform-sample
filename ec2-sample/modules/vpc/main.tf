@@ -1,6 +1,6 @@
 # VPC作成
 resource "aws_vpc" "default-vpc" {
-  cidr_block = "192.168.0.0/16"
+  cidr_block = "${var.vpc_cidr_block}"
   tags {
     Name = "terraform-vpc"
   }
@@ -9,7 +9,7 @@ resource "aws_vpc" "default-vpc" {
 # サブネット作成
 resource "aws_subnet" "default-vpc-public-subnet1" {
   vpc_id            = "${aws_vpc.default-vpc.id}"
-  cidr_block        = "192.168.1.0/24"
+  cidr_block        = "${var.subnet_cidr_block}"
   availability_zone = "ap-northeast-1a"
 
   tags {
